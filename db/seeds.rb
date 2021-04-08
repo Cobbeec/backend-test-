@@ -12,3 +12,5 @@
 # 5/1/21 = Day.create(date 5/1/21)
 
 Day.create(date: 4/7/21)
+
+Task.create(name: "Walk Birdie", description: "Walking my dog") 
