@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-
+ 
  
     def index
       tasks = Task.all
@@ -7,10 +7,12 @@ class TasksController < ApplicationController
     end
   
     def new
-      @task = task.new
+      @task = Task.new
     end
   
     def create
+      # @tasks = Tasks.new(task_params)
+      task = Task.new(name: params[:name], description: params[:description], day_id: params[:day_id])
     end
   
     def show
@@ -21,4 +23,9 @@ class TasksController < ApplicationController
     def update
     end
 
+
+    private 
+    def task_params
+        params.require(:task).permit(:name, :description, :day_id) 
+      end
   end
