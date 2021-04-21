@@ -11,18 +11,34 @@ class TasksController < ApplicationController
     end
   
     def create
-      # @tasks = Tasks.new(task_params)
-      task = Task.new(name: params[:name], description: params[:description], day_id: params[:day_id])
+    # byebug 
+    task = Task.create(task_params)
+    # (name: params[:name], description: params[:description], day_id: params[:day_id])
+    render json: task
     end
   
+  #   def create
+  #     name = Task.name 
+  #     description = Faker::Task.description
+  #     day_id = Task.day_id 
+  #     @task = Task.create
+  #     render json: @task  
+  # end
+
+
     def show
-      @task = Task.find_by_id(params[:id])
+      task = Task.find_by_id(params[:id])
+      render json: task
     end
   
     
     def update
     end
 
+    def destroy
+      task = Task.find(params[:id])
+      task.destroy
+  end
 
     private 
     def task_params
