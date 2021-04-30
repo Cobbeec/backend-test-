@@ -41,6 +41,12 @@ class TasksController < ApplicationController
       render json: { message: "Deleted successfully" }
     end
 
+    def update
+      task= Task.find(params[:id])
+      task.update(task_params)
+      render json: task 
+  end
+
     private 
     def task_params
         params.require(:task).permit(:name, :description, :day_id) 
