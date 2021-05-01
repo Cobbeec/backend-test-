@@ -13,7 +13,7 @@ class TasksController < ApplicationController
     def create
     # byebug 
     task = Task.create(task_params)
-    # (name: params[:name], description: params[:description], day_id: params[:day_id])
+    task.day_id = 1 
     render json: task
     end
   
@@ -49,6 +49,6 @@ class TasksController < ApplicationController
 
     private 
     def task_params
-        params.require(:task).permit(:name, :description, :day_id) 
+        params.require(:task).permit(:name, :description, :day_id, :dayList) 
       end
   end
